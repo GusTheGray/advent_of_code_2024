@@ -8,6 +8,5 @@ pub fn read_lines(filename: &str) -> Vec<String> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
 
 }

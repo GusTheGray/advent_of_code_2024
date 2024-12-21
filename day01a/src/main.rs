@@ -3,7 +3,7 @@ use std::usize;
 use shared_lib::read_lines;
 
 fn main() {
-    let input = read_lines("input.txt");
+    let input = read_lines("inputs/day01.txt");
 
     let answer = find_solution(input);
     println!("Answer is: {}", answer)
