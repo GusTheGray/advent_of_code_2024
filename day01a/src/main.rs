@@ -1,4 +1,6 @@
-use std::{fs::read_to_string, usize};
+use std::usize;
+
+use shared_lib::read_lines;
 
 fn main() {
     let input = read_lines("input.txt");
@@ -35,10 +37,7 @@ fn find_solution(input: Vec<String>) -> usize {
 
 
 
-fn read_lines(filename: &str) -> Vec<String> {
-    read_to_string(filename)
-    .expect("Could not find file").lines().map(String::from).collect()
-}
+
 
 
 #[cfg(test)]
