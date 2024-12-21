@@ -7,20 +7,17 @@ fn main() {
 
     let answer = find_solution(input);
     println!("Answer is: {}", answer)
-    
 }
-
 
 fn find_solution(input: Vec<String>) -> usize {
     let mut left = Vec::new();
     let mut right = Vec::new();
 
-
-    for l in input{
+    for l in input {
         let vals: Vec<&str> = l.split(' ').collect();
         println!("vals {:?}", vals);
         left.push(vals[0].parse::<usize>().unwrap());
-        right.push(vals[vals.len()-1].parse::<usize>().unwrap());
+        right.push(vals[vals.len() - 1].parse::<usize>().unwrap());
     }
 
     left.sort_unstable();
@@ -28,17 +25,12 @@ fn find_solution(input: Vec<String>) -> usize {
 
     let mut total_distance = 0;
     for (l, r) in left.iter().zip(right.iter()) {
-        let distance = if l > r {l - r } else {r-l};
+        let distance = if l > r { l - r } else { r - l };
         total_distance += distance
     }
 
     total_distance
 }
-
-
-
-
-
 
 #[cfg(test)]
 mod tests {
