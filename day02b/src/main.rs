@@ -59,6 +59,7 @@ fn find_solution(input: Vec<String>) -> i32 {
     safe
  }
 
+ #[cfg(test)]
 mod tests {
     use super::*;
 
