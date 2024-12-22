@@ -8,5 +8,9 @@ pub fn read_lines(filename: &str) -> Vec<String> {
         .collect()
 }
 
+pub fn print_answer(answer: &str) {
+    println!("The answer is: {}", answer);
+}
+
 #[cfg(test)]
 mod tests {}
