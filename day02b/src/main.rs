@@ -15,20 +15,16 @@ fn find_solution(input: Vec<String>) -> i32 {
             .split_whitespace()
             .map(|x| x.parse::<i32>().unwrap())
             .collect();
-        let mut safe = true;
-        if numbers[0] > numbers[1] {
-            for i in 1..numbers.len() {
-                let diff = numbers[i - 1] - numbers[i];
-                if diff < 1 || diff > 3 {
-                    safe = false;
-                    break;
-                }
-            }
-        } else {
-            for i in 1..numbers.len() {
-                let diff = numbers[i] - numbers[i - 1];
-                if diff < 1 || diff > 3 {
-                    safe = false;
+
+        let mut safe = is_safe(&numbers);
+
+        if !safe {
+            for i in 0..numbers.len() {
+                let mut temp_numbers = numbers.clone();
+                temp_numbers.remove(i);
+                let temp_safe = is_safe(&temp_numbers);
+                if temp_safe {
+                    safe = true;
                     break;
                 }
             }
@@ -39,9 +35,30 @@ fn find_solution(input: Vec<String>) -> i32 {
         }
     }
     num_safe
-}
+ }
 
-#[cfg(test)]
+ fn is_safe(numbers: &Vec<i32>) -> bool {
+    let mut safe = true;
+    if numbers[0] > numbers[1] {
+        for i in 1..numbers.len() {
+            let diff = numbers[i - 1] - numbers[i];
+            if diff < 1 || diff > 3 {
+                safe = false;
+                break;
+            }
+        }
+    } else {
+        for i in 1..numbers.len() {
+            let diff = numbers[i] - numbers[i - 1];
+            if diff < 1 || diff > 3 {
+                safe = false;
+                break;
+            }
+        }
+    }
+    safe
+ }
+
 mod tests {
     use super::*;
 
@@ -58,6 +75,6 @@ mod tests {
 
         let answer = find_solution(test_input);
 
-        assert_eq!(answer, 2);
+        assert_eq!(answer, 4);
     }
 }
