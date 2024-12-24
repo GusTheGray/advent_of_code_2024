@@ -35,9 +35,9 @@ fn find_solution(input: Vec<String>) -> i32 {
         }
     }
     num_safe
- }
+}
 
- fn is_safe(numbers: &Vec<i32>) -> bool {
+fn is_safe(numbers: &Vec<i32>) -> bool {
     let mut safe = true;
     if numbers[0] > numbers[1] {
         for i in 1..numbers.len() {
@@ -57,9 +57,9 @@ fn find_solution(input: Vec<String>) -> i32 {
         }
     }
     safe
- }
+}
 
- #[cfg(test)]
+#[cfg(test)]
 mod tests {
     use super::*;
 
